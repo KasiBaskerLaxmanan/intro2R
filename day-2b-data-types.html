@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Types</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Brad Boehmke" />
+    <meta name="date" content="2018-12-13" />
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link rel="stylesheet" href="scrollable.css" type="text/css" />
+    <link rel="stylesheet" href="mtheme_max.css" type="text/css" />
+    <link rel="stylesheet" href="fonts_mtheme_max.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+class: clear, center, middle
+
+background-image: url(images/data-types-icon.png)
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.font200.bold[Data Types]
+
+---
+
+# Data types
+
+.font120.center[Data types are involved in nearly every task in the data science flow; however, most relevant to you today will be in the visualization and transformation tasks.]
+
+&lt;img src="images/visualize-transform-task.png" width="2560" style="display: block; margin: auto;" /&gt;
+
+---
+
+class: yourturn
+# Your Turn!
+
+.center.font130.bold.blue[What types of data are in this data set?]
+
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; household_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; basket_id &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; brand &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; product_category &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; transaction_timestamp &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; quantity &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; multi_items &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2076 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 33655133880 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; CHEESES &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-06-11 21:04:48 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2366 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 33655836532 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; MEAT - MISC &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-06-12 20:00:19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2373 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 34105440952 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; UNKNOWN &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-07-15 11:39:31 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 982 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32760636924 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Private &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; SHORTENING/OIL &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-04-16 14:14:14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 761 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 35891900893 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Private &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; MILK BY-PRODUCTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-09-12 11:15:55 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2319 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 35891407347 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; LUNCHMEAT &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-09-12 19:10:28 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; TRUE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2412 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32137545147 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; DELI MEATS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-03-07 09:12:28 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 121 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32556675589 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; BROCCOLI/CAULIFLOWER &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-04-01 09:58:53 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; TRUE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1344 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 40969122208 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Private &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; BAKED BREAD/BUNS/ROLLS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-12-02 19:21:04 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2203 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32305165520 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Private &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FLUID MILK PRODUCTS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-03-20 08:43:12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 502 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 31969196175 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; CANDY - CHECKLANE &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-02-21 16:43:45 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 1421 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 34009827641 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; COCOA MIXES &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-07-07 19:28:24 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 113 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 41125076928 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; CRACKERS/MISC BKD FD &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-12-09 13:03:16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 781 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 40341621963 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; BAKING NEEDS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-10-14 13:24:37 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 979 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 32873041721 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; National &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ISOTONIC DRINKS &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2017-04-24 18:13:12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; FALSE &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Packages to work with these data types
+
+.pull-left[
+
+
+```r
+install.packages("tidyverse")
+```
+
+.bold[does the equivalent of...]
+
+
+```r
+install.packages("ggplot2")
+install.packages("tibble")
+install.packages("tidyr")
+install.packages("readr")
+install.packages("purrr")
+install.packages("dplyr")
+*install.packages("stringr")
+*install.packages("forcats")
+*install.packages("lubridate")
+*install.packages("hms")
+install.packages("DBI")
+install.packages("haven")
+install.packages("httr")
+install.packages("jsonlite")
+install.packages("readxl")
+install.packages("rvest")
+install.packages("xml2")
+install.packages("modelr")
+install.packages("broom")
+```
+
+]
+
+.pull-right[
+
+
+```r
+library(tidyverse)
+```
+
+.bold[does the equivalent of...]
+
+
+```r
+library(ggplot2) 
+library(tibble) 
+library(tidyr) 
+library(readr) 
+library(purrr) 
+library(dplyr) 
+*library(stringr)
+*library(forcats)
+```
+
+]
+
+
+---
+
+# Requirements
+
+.pull-left[
+
+### Packages
+
+
+```r
+library(tidyverse)
+library(forcats)   # to work with factors
+library(lubridate) # to work with dates
+library(hms)       # to work with dates
+```
+
+
+]
+
+.pull-right[
+
+### Data sets
+
+
+```r
+# complete journey data
+transactions &lt;- completejourney::transactions
+products &lt;- completejourney::products
+
+# imported data
+households &lt;- data.table::fread("data/households.csv", data.table = FALSE) %&gt;% as_tibble()
+```
+
+]
+
+---
+
+class: clear, center, middle
+
+
+background-image: url(images/logical-icon.jpg)
+background-size: cover
+
+.font300.bold[Logicals]
+
+---
+
+# Logicals
+
+R's data type for .blue[boolean values] (i.e. TRUE and FALSE)
+
+.pull-left[
+
+
+```r
+typeof(TRUE)
+## [1] "logical"
+
+typeof(FALSE)
+## [1] "logical"
+
+typeof(c(TRUE, TRUE, FALSE))
+## [1] "logical"
+```
+
+]
+
+.pull-right[
+
+
+```r
+transactions %&gt;%
+  select(basket_id, coupon_disc) %&gt;% 
+* mutate(used_coupon = coupon_disc &gt; 0)
+## # A tibble: 1,469,307 x 3
+##    basket_id   coupon_disc used_coupon
+##    &lt;chr&gt;             &lt;dbl&gt; &lt;lgl&gt;      
+##  1 31198570044           0 FALSE      
+##  2 31198570047           0 FALSE      
+##  3 31198655051           0 FALSE      
+##  4 31198705046           0 FALSE      
+##  5 31198705046           0 FALSE      
+##  6 31198705046           0 FALSE      
+##  7 31198705046           0 FALSE      
+##  8 31198676055           0 FALSE      
+##  9 31198676055           0 FALSE      
+## 10 31198676055           0 FALSE      
+## # ... with 1,469,297 more rows
+```
+
+]
+
+---
+
+# Most useful skill... .red[math with logicals]
+
+When you do math with logicals, .blue[TRUE becomes 1] and .blue[FALSE becomes 0.]
+
+--
+
+.pull-left[
+
+The .bold[sum] of a logical vector is the .bold[count of TRUEs]
+&lt;br&gt;&lt;br&gt;
+
+
+```r
+# logical comparison
+x &lt;- c(1, 2, 3, 4) &lt; 4
+x
+## [1]  TRUE  TRUE  TRUE FALSE
+
+# sum of elements that meet that condition
+sum(x)
+## [1] 3
+```
+
+]
+
+.pull-right[
+
+The .bold[mean] of a logical vector is the .bold[proportion of TRUEs]
+
+
+```r
+# proportion of elements that meet that condition
+mean(x)
+## [1] 0.75
+```
+
+]
+
+---
+class: yourturn
+# Your Turn!
+
+.pull-left[
+
+### Challenge
+
+Using the __completejourney::transactions__ data and the `coupon_disc` variable
+
+1. How many transactions used a coupon?
+2. What proportion of transactions used a coupon?
+
+]
+
+--
+
+.pull-right[
+
+### Solution
+
+
+```r
+transactions %&gt;% 
+  mutate(coupon_used = coupon_disc &gt; 0) %&gt;%
+  summarise(
+    count = sum(coupon_used),
+    prop  = mean(coupon_used)
+    )
+## # A tibble: 1 x 2
+##   count   prop
+##   &lt;int&gt;  &lt;dbl&gt;
+## 1 21889 0.0149
+```
+
+
+]
+
+---
+
+class: clear, center, middle
+
+
+background-image: url(images/character_string.png)
+background-size: cover
+
+.font300.bold.grey[Character Strings]
+
+---
+
+# Working with character strings &lt;a href="https://stringr.tidyverse.org/"&gt;&lt;img src="images/stringr.png" class="stringr-hex", align="right"&gt;&lt;/a&gt;
+
+.pull-left[
+
+&lt;br&gt;
+
+* Often, we have character strings in our data that are long (i.e. description fields), messy (i.e. manual user input), and/or inconsistent
+
+* Working with strings in base R can be a little frustrating primarily because of syntax inconsistencies
+
+* The [__stringr__](https://stringr.tidyverse.org/index.html) package allows you to work with strings easily
+
+]
+
+.pull-right[
+
+&lt;img src="images/stringr-large.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# stringr functions &lt;a href="https://stringr.tidyverse.org/"&gt;&lt;img src="images/stringr.png" class="stringr-hex", align="right"&gt;&lt;/a&gt;
+
+.center[
+
+.font200[All __stringr__ functions start with .bold.grey[`str_`]]
+
+.font130[.grey[`str_`].blue[`sub()`]]
+
+.font130[.grey[`str_`].blue[`count()`]]
+
+.font130[.grey[`str_`].blue[`replace()`]]
+
+.font130[.grey[`str_`].blue[`detect()`]]
+
+.font130[.grey[`str_`].blue[`remove()`]]
+
+.font130[...]
+
+.content-box-grey[.bold[Check out all the options with `stringr::str_ + tab`]]
+
+]
+
+---
+
+# stringr functions &lt;a href="https://stringr.tidyverse.org/"&gt;&lt;img src="images/stringr.png" class="stringr-hex", align="right"&gt;&lt;/a&gt;
+
+.scrollable90[
+
+.pull-left[
+
+Let's look at the variety of meat products:
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; product_category &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN MEAT &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN MEAT/MEAT DINNERS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; MEAT - SHELF STABLE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; MEAT - MISC &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; LUNCHMEAT &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; DELI MEATS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; SMOKED MEATS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; RW FRESH PROCESSED MEAT &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; MEAT SUPPLIES &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN PACKAGE MEAT &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right[
+
+
+```r
+# character string vector
+x &lt;- c("FROZEN MEAT", "FRZN MEAT/MEAT DINNERS", "MEAT - MISC", "CEREAL")
+
+# force to lower case
+str_to_lower(x)
+## [1] "frozen meat"            "frzn meat/meat dinners"
+## [3] "meat - misc"            "cereal"
+
+# extract first 4 characters
+str_sub(x, start = 1, end = 4)
+## [1] "FROZ" "FRZN" "MEAT" "CERE"
+
+# detect if "meat" is in each element
+str_detect(x, pattern = "MEAT")
+## [1]  TRUE  TRUE  TRUE FALSE
+
+# replace first "MEAT" in each element with "NON-VEGGIE
+str_replace(x, pattern = "MEAT", replacement = "NON-VEGGIE")
+## [1] "FROZEN NON-VEGGIE"            "FRZN NON-VEGGIE/MEAT DINNERS"
+## [3] "NON-VEGGIE - MISC"            "CEREAL"
+
+# replace all "MEAT" in each element with "NON-VEGGIE
+str_replace_all(x, pattern = "MEAT", replacement = "NON-VEGGIE")
+## [1] "FROZEN NON-VEGGIE"                 
+## [2] "FRZN NON-VEGGIE/NON-VEGGIE DINNERS"
+## [3] "NON-VEGGIE - MISC"                 
+## [4] "CEREAL"
+```
+
+]
+]
+
+---
+
+# Most useful skills &lt;a href="https://stringr.tidyverse.org/"&gt;&lt;img src="images/stringr.png" class="stringr-hex", align="right"&gt;&lt;/a&gt;
+
+&lt;br&gt;
+
+.font200[
+
+1. How to find matches for patterns
+
+2. How to extract / replace substrings
+
+3. Regular expressions
+
+]
+
+&lt;br&gt;
+.center[.content-box-grey[.bold[We will only hit the basics here, I cover this more thoroughly in Intermediate R]]]
+
+---
+
+# Find matches for patterns &lt;a href="https://stringr.tidyverse.org/"&gt;&lt;img src="images/stringr.png" class="stringr-hex", align="right"&gt;&lt;/a&gt;
+
+What if we wanted to analyze transactions for all .bold[meat] products?
+
+.pull-left[
+
+- `str_detect()` returns TRUE/FALSE
+- use with `filter()` to return only TRUEs
+
+
+```r
+products %&gt;% 
+  select(product_id, product_category) %&gt;%
+* filter(str_detect(product_category, "MEAT"))
+## # A tibble: 3,607 x 2
+##    product_id product_category      
+##    &lt;chr&gt;      &lt;chr&gt;                 
+##  1 30003      FROZEN MEAT           
+##  2 31493      FRZN MEAT/MEAT DINNERS
+##  3 34997      FRZN MEAT/MEAT DINNERS
+##  4 36406      FRZN MEAT/MEAT DINNERS
+##  5 36561      FRZN MEAT/MEAT DINNERS
+##  6 36618      MEAT - SHELF STABLE   
+##  7 36722      MEAT - MISC           
+##  8 37220      LUNCHMEAT             
+##  9 38412      LUNCHMEAT             
+## 10 39376      FRZN MEAT/MEAT DINNERS
+## # ... with 3,597 more rows
+```
+
+]
+
+--
+
+.pull-right[
+
+How many products are meat products?
+
+
+```r
+products %&gt;%
+  distinct(product_id, product_category) %&gt;%
+* mutate(meat_product = str_detect(product_category, "MEAT")) %&gt;%
+  summarize(
+    count = sum(meat_product, na.rm = TRUE),
+    prop  = mean(meat_product, na.rm = TRUE)
+  )
+## # A tibble: 1 x 2
+##   count   prop
+##   &lt;int&gt;  &lt;dbl&gt;
+## 1  3607 0.0391
+```
+
+
+]
+
+---
+
+# Extract/ replace substrings &lt;a href="https://stringr.tidyverse.org/"&gt;&lt;img src="images/stringr.png" class="stringr-hex", align="right"&gt;&lt;/a&gt;
+
+What if we wanted to analyze transactions for all .bold[frozen food] products?
+
+.pull-left[
+
+Notice that we have products categorized as .bold.blue["FROZEN"] and .bold.blue["FRZN"]
+
+&lt;table class="table" style="margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; product_category &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN ICE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN VEGETABLE/VEG DSH &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN FRUITS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; SEAFOOD - FROZEN &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN PIZZA &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN MEAT &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN MEAT/MEAT DINNERS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN BREAKFAST FOODS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN JCE CONC/DRNKS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN PIE/DESSERTS &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN BREAD/DOUGH &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN NOVELTIES/WTR ICE &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN POTATOES &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN CHICKEN &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN - BOXED(GROCERY) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FRZN SEAFOOD &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; FROZEN PACKAGE MEAT &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+.pull-right[
+
+- We can .blue[replace] all "FRZN" instances with .blue[`str_replace`]
+- Often, we want to replace ___all___ instances, not just the first
+
+
+```r
+products %&gt;%
+* mutate(product_category = str_replace_all(product_category, pattern = "FRZN", replacement = "FROZEN")) %&gt;%
+  filter(str_detect(product_category, "FROZEN")) %&gt;%
+  distinct(product_category)
+## # A tibble: 18 x 1
+##    product_category        
+##    &lt;chr&gt;                   
+##  1 FROZEN ICE              
+##  2 FROZEN VEGETABLE/VEG DSH
+##  3 FROZEN FRUITS           
+##  4 SEAFOOD - FROZEN        
+##  5 FROZEN PIZZA            
+##  6 FROZEN MEAT             
+##  7 FROZEN MEAT/MEAT DINNERS
+##  8 FROZEN BREAKFAST FOODS  
+##  9 FROZEN JCE CONC/DRNKS   
+## 10 FROZEN PIE/DESSERTS     
+## 11 FROZEN BREAD/DOUGH      
+## 12 FROZEN NOVELTIES/WTR ICE
+## 13 FROZEN POTATOES         
+## 14 FROZEN                  
+## 15 FROZEN CHICKEN          
+## 16 FROZEN - BOXED(GROCERY) 
+## 17 FROZEN SEAFOOD          
+## 18 FROZEN PACKAGE MEAT
+```
+
+]
+
+---
+
+# Regular expressions &lt;a href="https://stringr.tidyverse.org/"&gt;&lt;img src="images/stringr.png" class="stringr-hex", align="right"&gt;&lt;/a&gt;
+
+- What we have been doing is finding very simple .blue[___regular expressions___]
+
+- REGEX provides a concise way to identify patterns within character strings
+
+- We cover this more in-depth in the Intermediate R course
+
+
+```r
+# all products the start with "FROZEN", "FRZN", or end with the word "ICE"
+products %&gt;%
+  filter(str_detect(product_category, regex("(^FROZEN|FRZN|//bICE$)"))) %&gt;%
+  distinct(product_category)
+## # A tibble: 17 x 1
+##    product_category       
+##    &lt;chr&gt;                  
+##  1 FRZN ICE               
+##  2 FRZN VEGETABLE/VEG DSH 
+##  3 FRZN FRUITS            
+##  4 FROZEN PIZZA           
+##  5 FROZEN MEAT            
+##  6 FRZN MEAT/MEAT DINNERS 
+##  7 FRZN BREAKFAST FOODS   
+##  8 FRZN JCE CONC/DRNKS    
+##  9 FROZEN PIE/DESSERTS    
+## 10 FROZEN BREAD/DOUGH     
+## 11 FRZN NOVELTIES/WTR ICE 
+## 12 FRZN POTATOES          
+## 13 FROZEN                 
+## 14 FROZEN CHICKEN         
+## 15 FROZEN - BOXED(GROCERY)
+## 16 FRZN SEAFOOD           
+## 17 FROZEN PACKAGE MEAT
+```
+
+
+---
+
+
+class: yourturn
+# Your Turn!
+
+.pull-left[
+
+### Challenge
+
+Using the __completejourney::products__ data and `product_category` variable
+
+1. How many products contain "SEAFOOD"
+2. What is the proportion of products that contain "SEAFOOD"
+
+__Hint:__
+
+
+```r
+products %&gt;%
+  distinct(product_category) %&gt;%
+  mutate(seafood = _____) %&gt;%
+  summarise(
+    count = _____,
+    prop  = _____
+    )
+```
+
+
+]
+
+--
+
+.pull-right[
+
+### Solution
+
+
+```r
+products %&gt;%
+  distinct(product_category) %&gt;%
+  mutate(seafood = str_detect(product_category, pattern = "SEAFOOD")) %&gt;%
+  summarise(
+    count = sum(seafood, na.rm = TRUE),
+    prop  = mean(seafood, na.rm = TRUE)
+    )
+## # A tibble: 1 x 2
+##   count   prop
+##   &lt;int&gt;  &lt;dbl&gt;
+## 1     6 0.0195
+```
+
+
+]
+
+---
+
+class: clear, center, middle
+
+
+background-image: url(images/factor-icon.jpg)
+background-size: cover
+
+&lt;br&gt;&lt;br&gt;&lt;br&gt;
+.font300.bold.grey[Factors]
+
+---
+
+# Working with factors &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+.pull-left[
+
+&lt;br&gt;
+
+* Factors are a useful data structure; particularly for modeling and visualizations because they control the order of levels
+
+* Working with factors in base R can be a little frustrating because of syntax inconsistencies and a handful of missing tools
+
+* The [__forcats__](https://forcats.tidyverse.org/index.html) package allows you to modify factors with minimal pain
+
+]
+
+.pull-right[
+
+&lt;img src="images/forcats-large.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Working with factors &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+R’s representation of categorical data. Consists of:
+
+- A set of discrete values
+- An ordered set of valid levels
+
+
+```r
+eyes &lt;- factor(x = c("blue", "green", "green"), levels = c("blue", "brown", "green"))
+eyes
+## [1] blue  green green
+## Levels: blue brown green
+```
+
+--
+
+Stored as an integer vector with a levels attribute
+
+
+```r
+unclass(eyes)
+## [1] 1 3 3
+## attr(,"levels")
+## [1] "blue"  "brown" "green"
+```
+
+
+---
+
+# Working with factors &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+Categorical variables can have levels that are ordered, unordered, collapsable, etc.  Consider:
+
+.pull-left[
+
+
+```r
+households %&gt;% distinct(marital)
+## # A tibble: 4 x 1
+##   marital
+##   &lt;chr&gt;  
+## 1 Unknown
+## 2 Married
+## 3 null   
+## 4 Single
+```
+
+
+]
+
+.pull-right[
+
+
+```r
+households %&gt;% distinct(income_range)
+## # A tibble: 7 x 1
+##   income_range
+##   &lt;chr&gt;       
+## 1 35-49K      
+## 2 50-74K      
+## 3 75-99K      
+## 4 UNDER 35K   
+## 5 150K+       
+## 6 100-150K    
+## 7 null
+```
+
+]
+
+&lt;br&gt;&lt;br&gt;
+.center[.content-box-gray[.bold[Why would we care about changeing these levels? 🤔]]]
+
+---
+# Working with factors &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+Often, we want to adjust the categories or the ordering of categories for a categorical variable.  Consider:
+
+.pull-left[
+
+
+```r
+ggplot(households, aes(marital)) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+.pull-right[
+
+
+```r
+ggplot(households, aes(income_range)) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Most useful skills... &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+.pull-left[
+.font150[
+
+&lt;br&gt;
+
+- Reorder the levels
+
+- Recode the levels
+
+- Collapse levels
+
+]
+]
+
+.pull-right[
+
+.font150[
+
+&lt;br&gt;
+
+All __forcats__ functions start with .grey[`fct_`]
+
+- .grey[`fct_`].blue[`relevel()`]
+- .grey[`fct_`].blue[`recode()`]
+- .grey[`fct_`].blue[`collapse()`]
+- .grey[`fct_`].blue[`unique()`]
+
+]
+]
+
+---
+# Reorder the levels &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+We can .blue[reorder] factor levels with .blue[`fct_relevel()`]
+
+.pull-left[
+
+
+```r
+households &lt;- households %&gt;% 
+* mutate(income_range = fct_relevel(income_range, "UNDER 35K", "35-49K", "50-74K", "75-99K", "100-150K", "150K+", "null"))
+
+households %&gt;% count(income_range)
+## # A tibble: 7 x 2
+##   income_range     n
+##   &lt;fct&gt;        &lt;int&gt;
+## 1 UNDER 35K      790
+## 2 35-49K         876
+## 3 50-74K         947
+## 4 75-99K         594
+## 5 100-150K       581
+## 6 150K+          347
+## 7 null           865
+```
+
+]
+
+.pull-right[
+
+
+```r
+ggplot(households, aes(income_range)) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/plot-releveled-income-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Recode the levels &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+We can .blue[recode] factor levels with .blue[`fct_recode()`]
+
+.pull-left[
+
+
+```r
+households &lt;- households %&gt;%
+* mutate(income_range = fct_recode(income_range, Unknown = "null"))
+
+households %&gt;% count(income_range)
+## # A tibble: 7 x 2
+##   income_range     n
+##   &lt;fct&gt;        &lt;int&gt;
+## 1 UNDER 35K      790
+## 2 35-49K         876
+## 3 50-74K         947
+## 4 75-99K         594
+## 5 100-150K       581
+## 6 150K+          347
+## 7 Unknown        865
+```
+
+
+]
+
+.pull-right[
+
+
+```r
+ggplot(households, aes(income_range)) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/recode-income-plot-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+# Collapse the levels &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+We can .blue[collapse] factor levels with .blue[`fct_collapse()`]
+
+.pull-left[
+
+
+```r
+households &lt;- households %&gt;%
+  mutate(
+*   marital = fct_collapse(marital, Unknown = c("null", "Unknown")),
+    marital = fct_relevel(marital, "Unknown", after = Inf)
+    )
+
+households %&gt;% count(marital)
+## # A tibble: 3 x 2
+##   marital     n
+##   &lt;fct&gt;   &lt;int&gt;
+## 1 Married  2405
+## 2 Single   1388
+## 3 Unknown  1207
+```
+
+]
+
+.pull-right[
+
+
+```r
+ggplot(households, aes(marital)) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/collapse-marital-status-plot-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Working with factors &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+Sometimes you just want to .blue[reorder a factor for plotting purposes] rather than to permanently change the factor.  .blue[`fct_infreq()`], .blue[`fct_rev()`], and .blue[`fct_reorder()`] can be helpful.
+
+--
+
+.pull-left[
+
+
+```r
+households %&gt;%
+  mutate(homeowner = fct_collapse(homeowner, Unknown = c("Unknown", "null"))) %&gt;%
+* ggplot(aes(fct_infreq(homeowner))) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+.pull-right[
+
+
+```r
+households %&gt;%
+  mutate(homeowner = fct_collapse(homeowner, Unknown = c("Unknown", "null"))) %&gt;%
+* ggplot(aes(fct_rev(homeowner))) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+
+# Working with factors &lt;a href="https://forcats.tidyverse.org/"&gt;&lt;img src="images/forcats.png" class="forcats-hex", align="right"&gt;&lt;/a&gt;
+
+Sometimes you just want to .blue[reorder a factor for plotting purposes] rather than to permanently change the factor.  .blue[`fct_infreq()`], .blue[`fct_rev()`], and .blue[`fct_reorder()`] can be helpful.
+
+.pull-left[
+
+
+```r
+prod_count &lt;- products %&gt;% 
+  count(department) %&gt;%
+  drop_na()
+
+prod_count
+## # A tibble: 32 x 2
+##    department          n
+##    &lt;chr&gt;           &lt;int&gt;
+##  1 AUTOMOTIVE          2
+##  2 CHARITABLE CONT     2
+##  3 CHEF SHOPPE        14
+##  4 CNTRL/STORE SUP     4
+##  5 COSMETICS        3011
+##  6 COUPON             39
+##  7 DELI             2359
+##  8 DRUG GM         31540
+##  9 ELECT &amp;PLUMBING     1
+## 10 FLORAL            938
+## # ... with 22 more rows
+```
+
+]
+
+.pull-right[
+
+
+```r
+*ggplot(prod_count, aes(n, fct_reorder(department, n))) +
+  geom_point()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/fct-reorder-plot-1.png" style="display: block; margin: auto;" /&gt;
+
+
+]
+
+---
+
+class: yourturn
+# Your Turn!
+
+.pull-left[
+
+### Challenge
+
+Using the __households__ data
+
+1. Recode the `hh_size` factor so that "null" is now "Unknown"
+
+2. Relevel the `hh_size` factor so that "Unknown" is at the end
+
+3. Use a bar chart to illustrate the distribution of `hh_size` in our data
+
+]
+
+.pull-right[
+
+### Solution
+
+
+```r
+households %&gt;% 
+  mutate(
+    hh_size = fct_recode(hh_size, Unknown = "null"),
+    hh_size = fct_relevel(hh_size, "Unknown", after = Inf)
+    ) %&gt;%
+  ggplot(aes(hh_size)) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/yourturn-factors-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+background-image: url(images/date-time-icon.jpg)
+background-size: cover
+
+# Dates &amp; Times
+
+---
+
+# Working with dates &amp; times &lt;a href="https://lubridate.tidyverse.org/"&gt;&lt;img src="images/lubridate.png" class="lubridate-hex", align="right"&gt;&lt;/a&gt;
+
+.pull-left[
+
+&lt;br&gt;
+
+* Dates come in many different forms:
+   - 2017/02/03
+   - February 3, 2017
+   - 03-Feb-2017
+
+* Working with dates in R can be a bit convoluted and cumbersome
+
+* The [__lubridate__](https://lubridate.tidyverse.org/index.html) package allows us to easily handle/manipulate date-time variables
+
+]
+
+.pull-right[
+
+&lt;img src="images/lubridate-large.png" width="80%" height="80%" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Most useful skills... &lt;a href="https://lubridate.tidyverse.org/"&gt;&lt;img src="images/lubridate.png" class="lubridate-hex", align="right"&gt;&lt;/a&gt;
+
+.font200[
+
+- Creating dates/times (i.e. parsing)
+
+- Access and change parts of a date
+
+- .opacity20[Deal with time zones]
+
+- .opacity20[Do math with instants and time spans]
+
+]
+
+---
+
+# Creating dates/times &lt;a href="https://lubridate.tidyverse.org/"&gt;&lt;img src="images/lubridate.png" class="lubridate-hex", align="right"&gt;&lt;/a&gt;
+
+__lubridate__ has a series of parsing functions that will .blue[create dates] based on the existence and order of the date-time components
+
+.pull-left[
+
+.font130[
+- `ymd_hms()`, `ymd_hm()`, `ymd_h()`, `ymd()`
+- `ydm_hms()`, `ydm_hm()`, `ydm_h()`, `ydm()`
+- `dmy_hms()`, `dmy_hm()`, `dmy_h()`, `dmy()`
+- `mdy_hms()`, `mdy_hm()`, `mdy_h()`, `mdy()`
+- and more!
+
+]
+]
+
+.pull-right[
+
+
+```r
+# year, month, day
+ymd("2018-12-02")
+## [1] "2018-12-02"
+
+# year, month, day, hour
+ymd_h("2018-12-02 01")
+## [1] "2018-12-02 01:00:00 UTC"
+
+# year, month, day, timestamp
+ymd_hms("2018-12-02 01:31:27")
+## [1] "2018-12-02 01:31:27 UTC"
+```
+
+and __lubridate__ does not care about format
+
+
+```r
+ymd("2018-12-02")
+## [1] "2018-12-02"
+ymd("2018/12/02")
+## [1] "2018-12-02"
+mdy("February 02, 2018")
+## [1] "2018-02-02"
+```
+
+]
+
+---
+# Accessing components &lt;a href="https://lubridate.tidyverse.org/"&gt;&lt;img src="images/lubridate.png" class="lubridate-hex", align="right"&gt;&lt;/a&gt;
+
+__lubridate__ has a series of functions to .blue[extract components] of dates
+
+.pull-left[
+
+.font130[
+- `year()`
+- `quarter()`
+- `month()`
+- `week()`
+- `wday()`
+- `hour()`
+- and more!
+
+]
+]
+
+.pull-right[
+
+
+```r
+# get year
+year("2018-12-02 01:31:27")
+## [1] 2018
+
+# get quarter
+quarter("2018-12-02 01:31:27")
+## [1] 4
+
+# get month
+month("2018-12-02 01:31:27", label = TRUE)
+## [1] Dec
+## 12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec
+
+# get weekday
+wday("2018-12-02 01:31:27", label = TRUE, abbr = FALSE)
+## [1] Sunday
+## 7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday
+```
+
+]
+
+---
+
+# Accessing components &lt;a href="https://lubridate.tidyverse.org/"&gt;&lt;img src="images/lubridate.png" class="lubridate-hex", align="right"&gt;&lt;/a&gt;
+
+- Just like __stringr__, we can use the __lubridate__ functions inside `filter()` and `mutate()`
+
+.pull-left[
+
+Use `filter()` to get all transactions that occur on weekends
+
+
+```r
+transactions %&gt;%
+* filter(wday(transaction_timestamp) %in% 6:7) %&gt;%
+  select(basket_id, transaction_timestamp)
+## # A tibble: 442,370 x 2
+##    basket_id   transaction_timestamp
+##    &lt;chr&gt;       &lt;dttm&gt;               
+##  1 31269173695 2017-01-06 00:15:57  
+##  2 31269173695 2017-01-06 00:15:57  
+##  3 31269173696 2017-01-06 00:16:57  
+##  4 31268902157 2017-01-06 00:40:34  
+##  5 31268902157 2017-01-06 00:40:34  
+##  6 31268902157 2017-01-06 00:40:34  
+##  7 31268902157 2017-01-06 00:40:34  
+##  8 31268902157 2017-01-06 00:40:34  
+##  9 31268902157 2017-01-06 00:40:34  
+## 10 31268902157 2017-01-06 00:40:34  
+## # ... with 442,360 more rows
+```
+
+]
+
+.pull-right[
+
+Use `mutate()` to create a new variable for the day of week
+
+
+```r
+transactions %&gt;%
+* mutate(weekday = wday(transaction_timestamp, label = TRUE)) %&gt;%
+  select(basket_id, transaction_timestamp, weekday)
+## # A tibble: 1,469,307 x 3
+##    basket_id   transaction_timestamp weekday
+##    &lt;chr&gt;       &lt;dttm&gt;                &lt;ord&gt;  
+##  1 31198570044 2017-01-01 06:53:26   Sun    
+##  2 31198570047 2017-01-01 07:10:28   Sun    
+##  3 31198655051 2017-01-01 07:26:30   Sun    
+##  4 31198705046 2017-01-01 07:30:27   Sun    
+##  5 31198705046 2017-01-01 07:30:27   Sun    
+##  6 31198705046 2017-01-01 07:30:27   Sun    
+##  7 31198705046 2017-01-01 07:30:27   Sun    
+##  8 31198676055 2017-01-01 07:56:33   Sun    
+##  9 31198676055 2017-01-01 07:56:33   Sun    
+## 10 31198676055 2017-01-01 07:56:33   Sun    
+## # ... with 1,469,297 more rows
+```
+
+]
+
+---
+
+class: yourturn
+# Your Turn!
+
+.pull-left[
+
+### Challenge
+
+Using the __completejourney::transactions__ data set
+
+1. Make a bar chart showing the total number of transactions by weekday. Which weekday experiences the most traffic?
+
+2. Make a line chart showing the total daily sales value (`sum(sales_value)`) for each day of the year (hint: use `yday()`).  Is there any obvious trend in the daily total sales value?
+
+]
+
+--
+
+.pull-right[
+
+### Solution
+
+
+```r
+# 1
+transactions %&gt;%
+  mutate(weekday = wday(transaction_timestamp, label = TRUE)) %&gt;% 
+  ggplot(aes(weekday)) +
+  geom_bar()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/yourturn-lubridate-1-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+class: yourturn
+# Your Turn!
+
+.pull-left[
+
+### Challenge
+
+Using the __completejourney::transactions__ data set
+
+1. Make a bar chart showing the total number of transactions by weekday. Which weekday experiences the most traffic?
+
+2. Make a line chart showing the total daily sales value (`sum(sales_value)`) for each day of the year (hint: use `yday()`).  Is there any obvious trend in the daily total sales value?
+
+]
+
+.pull-right[
+
+### Solution
+
+
+```r
+# 2
+transactions %&gt;%
+  mutate(day = yday(transaction_timestamp)) %&gt;% 
+  group_by(day) %&gt;%
+  summarise(total_sales = sum(sales_value, na.rm = TRUE)) %&gt;%
+  ggplot(aes(x = day, y = total_sales)) +
+  geom_line()
+```
+
+&lt;img src="day-2b-data-types_files/figure-html/yourturn-lubridate-2-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Questions?
+
+.font120.center[We can do a lot with data types, and the packages reviewed here can do much more than what we covered; however, this gets you started with manipulating data types for analytic purposes.]
+
+&lt;img src="images/questions.png" width="400" height="400" style="display: block; margin: auto;" /&gt;
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
